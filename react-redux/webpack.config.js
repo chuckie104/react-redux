@@ -1,4 +1,11 @@
-var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require("webpack");
+var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+    template: __dirname + '/test/index.html',
+    filename: 'index.html',
+    inject: 'body'
+})
+
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var path = require('path');
 
@@ -32,5 +39,7 @@ module.exports = {
         //     ActionType : 'js/actions/ActionType.js',
         //     AppAction : 'js/actions/AppAction.js'
         // }
-    }
+    },plugins: [
+        HtmlWebpackPluginConfig
+      ]
 };
